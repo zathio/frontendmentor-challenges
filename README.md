@@ -8,5 +8,5 @@ For more informations check [Frontend Mentor website](https://www.frontendmentor
 
 You can find below the live versions of my solutions :
 
-**Easybank Landing Page** : A digital banking landing page with responsive design. See it [live](https://zathio.github.io/frontendmentor-challenges/easybank-landing-page/) here.
+**Easybank Landing Page** : A digital banking landing page with responsive design. See it live [here](https://zathio.github.io/frontendmentor-challenges/easybank-landing-page/).
 
