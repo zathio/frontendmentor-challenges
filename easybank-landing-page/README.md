@@ -1,4 +1,4 @@
-# Live version [here](https://zathio.github.io/frontendmentor-challenges/easybank-landing-page/).
+### Live version [here](https://zathio.github.io/frontendmentor-challenges/easybank-landing-page/).
 
 # Frontend Mentor - Easybank landing page
 
