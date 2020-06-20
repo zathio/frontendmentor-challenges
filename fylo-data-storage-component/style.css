@@ -31,8 +31,8 @@ body {
     justify-content: center;
     height: 100vh;
     background: url(images/bg-desktop.svg) no-repeat, linear-gradient(var(--very-dark-blue), var(--very-dark-blue));
-    background-position: 0 50vh;
-    background-size: contain;
+    background-position: center 50vh;
+    background-size: 100% 50%;
 }
 
 /* CONTAINER */
@@ -73,7 +73,7 @@ body {
     background: var(--very-dark-blue);
     width: 3rem;
     height: 3rem;
-    border-radius: 7px;
+    border-radius: 10px;
     margin-right: .8rem;
     border: 2px solid var(--dark-blue);
     transition: .1s;
@@ -111,6 +111,7 @@ body {
 
 .values {
     justify-content: space-between;
+    font-size: .9rem;
 }
 
 .progress-bar, .fill {
@@ -120,7 +121,7 @@ body {
 .progress-bar {
     width: 100%;
     height: 1.3rem;
-    background: var(--very-dark-blue);
+    background: rgba(0,0,0,.33);
     padding: .2rem;
     margin: 1.1rem 0 .6rem 0;
 }
@@ -166,10 +167,11 @@ body {
 
 .gb {
     font-size: 2.9rem;
+    color: var(--very-dark-blue);
 }
 
 .gb-left {
-    font-size: 1rem;
+    font-size: .9rem;
     text-transform: uppercase;
     color: var(--grayish-blue);
     position: relative;
