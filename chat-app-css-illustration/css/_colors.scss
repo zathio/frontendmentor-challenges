@@ -1,0 +1,19 @@
+$colors: (
+    white: hsl(0, 0%, 100%),
+    bg: hsl(0, 0%, 98%),
+    app-bg: hsl(270, 20%, 96%),
+    light-gray: hsl(272, 41%, 92%),
+    primary-magenta: hsl(293, 100%, 63%),
+    primary-violet: hsl(264, 100%, 61%),
+    clear-magenta: hsl(289, 100%, 82%),
+    dark-violet: hsl(271, 36%, 24%),
+    pale-violet: hsl(276, 100%, 81%),
+    medium-violet: hsl(276, 55%, 52%),
+    desaturated-violet: hsl(271, 15%, 43%),
+    grayish-blue: hsl(206, 6%, 79%),
+    dark-grayish-violet: hsl(270, 7%, 64%)
+);
+
+@function color($color-name) {
+    @return map-get($colors, $color-name)
+}

@@ -1,0 +1,339 @@
+@import 'reset', 'colors';
+
+@mixin desktop {
+    @media screen and (min-width: 1000px) {
+        @content;
+    }
+}
+
+@mixin flex {
+    display: flex;
+    align-items: center;
+}
+
+/* BODY */
+
+body {
+    min-height: 100vh;
+    background: color(bg);
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+
+    @include flex;
+}
+
+.bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    user-select: none;
+    z-index: -100;
+    $radius: 375px;
+    
+    &::before, &::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+
+        @include desktop {
+            width: 750px;
+        }
+    }
+    
+    &::before {
+        top: 0;
+        left: -50%;
+        height: 52%;
+        border-radius: 0 0 $radius $radius;
+        background: linear-gradient(180deg, color(primary-magenta), color(primary-violet));
+        
+        @include desktop {
+            height: 88%;
+            left: -198px;
+        }
+    }
+    
+    &::after {
+        bottom: 0;
+        right: -50%;
+        height: 54%;
+        border-radius: $radius $radius 0 0;
+        background: color(app-bg);
+        
+        @include desktop {
+            height: 88%;
+            right: -220px;
+        }
+    }
+}
+
+/* CONTAINER */
+
+.container {
+    max-width: 990px;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: -1.4rem 0 7rem 0;
+
+    @include flex;
+
+    @include desktop {
+        margin: 0;
+        flex-direction: row;
+    }
+
+    /* PHONE MOCKUP */
+
+    .phone-box {
+        width: 338px;
+        height: fit-content;
+        border: 12px solid color(white);
+        border-top-width: 14px;
+        box-shadow: 10px 15px 40px rgba(0,0,0,.1);
+        border-radius: 35px;
+        background: color(app-bg);
+        overflow: hidden;
+        position: relative;
+        flex-shrink: 0;
+        transform: scale(.75);
+
+        @include desktop {
+            transform: scale(.9);
+        }
+
+        &::after {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            content: "";
+            width: 57%;
+            border-radius: 0 0 14px 14px;
+            height: 20px;
+            background-color: color(white);
+        }
+
+        .app-header {
+            background: linear-gradient(90deg, color(primary-violet), color(primary-magenta));
+            border-radius: 0 0 6px 6px;
+            padding: 2rem 1rem 1rem 1rem;
+            justify-content: space-between;
+            color: color(white);
+            box-shadow: 0 5px 5px rgba(0,0,0,.04);
+
+            @include flex;
+
+            .return-btn {
+                transform: scaleX(.6);
+                font-size: 1.3rem;
+            }
+
+            .avatar {
+                width: 32px;
+                border-radius: 50%;
+                border: 2px solid color(white);
+            }
+
+            .user-infos {
+                width: 67%;
+
+                .user-availability {
+                    font-size: .7rem;
+                    margin-top: .1rem;
+                    color: color(pale-violet);
+                }
+            }
+
+            .ellipsis-menu {
+                font-size: 1.1rem;
+                opacity: .9;
+            }
+        }
+
+        .app-content {
+            padding: .3rem .75rem;
+            flex-direction: column;
+
+            @include flex;
+
+            .sender {
+                align-self: flex-start;
+                margin-top: .75rem;
+            }
+            
+            .receiver {
+                align-self: flex-end;
+                margin-top: .75rem;
+            }
+
+            .msg {
+                font-size: .69rem;
+                padding: .65rem .8rem;
+                max-width: 180px;
+                border-radius: 14px;
+            }
+
+            .msg.sender {
+                background: color(light-gray);
+                color: color(medium-violet);
+                border-bottom-left-radius: 3px;
+            }
+            
+            .msg.receiver {
+                background: color(white);
+                color: color(desaturated-violet);
+                border-bottom-right-radius: 3px;
+                box-shadow: 3px 8px 14px rgba(0,0,0,.03);
+            }
+
+            .msg.receiver.first {
+                margin-top: .5rem;
+            }
+
+            .msg.receiver.second {
+                margin-bottom: .75rem;
+            }
+
+            .dog-pics-box {
+                margin-top: 1.5rem;
+
+                .dog-pic {
+                    width: 55px;
+                    border-radius: 12px;
+                    margin-left: .45rem;
+                }
+            }
+
+            .pricing-solution {
+                background: linear-gradient(90deg, color(primary-magenta), color(primary-violet));
+                padding: .65rem 1.2rem .65rem .8rem;
+                width: 215px;
+                border-radius: 14px;
+                border-bottom-left-radius: 3px;
+                box-shadow: -3px 4px 8px rgba(0,0,0,.07);
+                justify-content: space-between;
+
+                @include flex;
+
+                .solution-name {
+                    width: 100%;
+                    font-size: .69rem;
+                    color: color(light-gray);
+                }
+
+                .solution-input {
+                    flex-shrink: 0;
+                    margin: -.05rem .6rem 0 0;
+                    width: 17px;
+                    height: 17px;
+                    border: 1px solid color(clear-magenta);
+                    border-radius: 50%;
+                }
+
+                .price {
+                    color: color(white);
+                    font-size: 1.05rem;
+                    font-weight: 500;
+                }
+            }
+
+            .input-msg {
+                position: relative;
+                width: 100%;
+                margin: 1.2rem 0 .65rem 0;
+
+                .input-text {
+                    width: 100%;
+                    background-color: color(white);
+                    border: none;
+                    outline: none;
+                    border-radius: 140px;
+                    padding: .9rem 1.3rem;
+                }
+                
+                .input-text::placeholder {
+                    color: color(grayish-blue);
+                    font-size: .8rem;
+                }
+
+                .send-btn {
+                    position: absolute;
+                    justify-content: center;
+                    top: 50%;
+                    right: 7px;
+                    transform: translateY(-50%);
+                    color: color(white);
+                    background: color(dark-violet);
+                    width: 32px;
+                    height: 32px;
+                    font-size: 1.2rem;
+                    border-radius: 50%;
+
+                    @include flex;
+                }
+            }
+        }
+    }
+
+    /* TEXT */
+
+    .text-box {
+        text-align: center;
+        width: 310px;
+        margin-top: -1.75rem;
+
+        @include desktop {
+            text-align: left;
+            width: 510px;
+            margin-top: 0;
+        }
+
+        .title {
+            font-size: 2.25rem;
+            font-weight: 500;
+            color: color(dark-violet);
+            margin-bottom: 1.6rem;
+
+            @include desktop {
+                font-size: 3rem;
+            }
+        }
+
+        .presentation {
+            color: color(dark-grayish-violet);
+            line-height: 1.8rem;
+
+            @include desktop {
+                font-size: 1.15rem;
+                line-height: 2rem;
+            }
+        }
+    }
+}
+
+/* FOOTER */
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1.2rem 0;
+
+    .attribution {
+        white-space: nowrap;
+        font-size: .7rem;
+        color: color(dark-grayish-violet);
+
+        @include desktop {
+            font-size: .85rem;
+        }
+    
+        a {
+            color: color(primary-violet);
+        }
+    }
+}

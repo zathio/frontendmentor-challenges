@@ -1,0 +1,434 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-family: 'Rubik', sans-serif;
+  font-size: 16px;
+}
+
+/* BODY */
+body {
+  min-height: 100vh;
+  background: #fafafa;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  z-index: -100;
+}
+
+.bg::before, .bg::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+}
+
+@media screen and (min-width: 1000px) {
+  .bg::before, .bg::after {
+    width: 750px;
+  }
+}
+
+.bg::before {
+  top: 0;
+  left: -50%;
+  height: 52%;
+  border-radius: 0 0 375px 375px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#e942ff), to(#8838ff));
+  background: linear-gradient(180deg, #e942ff, #8838ff);
+}
+
+@media screen and (min-width: 1000px) {
+  .bg::before {
+    height: 88%;
+    left: -198px;
+  }
+}
+
+.bg::after {
+  bottom: 0;
+  right: -50%;
+  height: 54%;
+  border-radius: 375px 375px 0 0;
+  background: #f5f3f7;
+}
+
+@media screen and (min-width: 1000px) {
+  .bg::after {
+    height: 88%;
+    right: -220px;
+  }
+}
+
+/* CONTAINER */
+.container {
+  max-width: 990px;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: -1.4rem 0 7rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* PHONE MOCKUP */
+  /* TEXT */
+}
+
+@media screen and (min-width: 1000px) {
+  .container {
+    margin: 0;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+.container .phone-box {
+  width: 338px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 12px solid white;
+  border-top-width: 14px;
+  -webkit-box-shadow: 10px 15px 40px rgba(0, 0, 0, 0.1);
+          box-shadow: 10px 15px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 35px;
+  background: #f5f3f7;
+  overflow: hidden;
+  position: relative;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-transform: scale(0.75);
+          transform: scale(0.75);
+}
+
+@media screen and (min-width: 1000px) {
+  .container .phone-box {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+}
+
+.container .phone-box::after {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  content: "";
+  width: 57%;
+  border-radius: 0 0 14px 14px;
+  height: 20px;
+  background-color: white;
+}
+
+.container .phone-box .app-header {
+  background: -webkit-gradient(linear, left top, right top, from(#8838ff), to(#e942ff));
+  background: linear-gradient(90deg, #8838ff, #e942ff);
+  border-radius: 0 0 6px 6px;
+  padding: 2rem 1rem 1rem 1rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.04);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .phone-box .app-header .return-btn {
+  -webkit-transform: scaleX(0.6);
+          transform: scaleX(0.6);
+  font-size: 1.3rem;
+}
+
+.container .phone-box .app-header .avatar {
+  width: 32px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.container .phone-box .app-header .user-infos {
+  width: 67%;
+}
+
+.container .phone-box .app-header .user-infos .user-availability {
+  font-size: .7rem;
+  margin-top: .1rem;
+  color: #d89eff;
+}
+
+.container .phone-box .app-header .ellipsis-menu {
+  font-size: 1.1rem;
+  opacity: .9;
+}
+
+.container .phone-box .app-content {
+  padding: .3rem .75rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .phone-box .app-content .sender {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin-top: .75rem;
+}
+
+.container .phone-box .app-content .receiver {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-top: .75rem;
+}
+
+.container .phone-box .app-content .msg {
+  font-size: .69rem;
+  padding: .65rem .8rem;
+  max-width: 180px;
+  border-radius: 14px;
+}
+
+.container .phone-box .app-content .msg.sender {
+  background: #ebe2f3;
+  color: #9241c8;
+  border-bottom-left-radius: 3px;
+}
+
+.container .phone-box .app-content .msg.receiver {
+  background: white;
+  color: #6e5d7e;
+  border-bottom-right-radius: 3px;
+  -webkit-box-shadow: 3px 8px 14px rgba(0, 0, 0, 0.03);
+          box-shadow: 3px 8px 14px rgba(0, 0, 0, 0.03);
+}
+
+.container .phone-box .app-content .msg.receiver.first {
+  margin-top: .5rem;
+}
+
+.container .phone-box .app-content .msg.receiver.second {
+  margin-bottom: .75rem;
+}
+
+.container .phone-box .app-content .dog-pics-box {
+  margin-top: 1.5rem;
+}
+
+.container .phone-box .app-content .dog-pics-box .dog-pic {
+  width: 55px;
+  border-radius: 12px;
+  margin-left: .45rem;
+}
+
+.container .phone-box .app-content .pricing-solution {
+  background: -webkit-gradient(linear, left top, right top, from(#e942ff), to(#8838ff));
+  background: linear-gradient(90deg, #e942ff, #8838ff);
+  padding: .65rem 1.2rem .65rem .8rem;
+  width: 215px;
+  border-radius: 14px;
+  border-bottom-left-radius: 3px;
+  -webkit-box-shadow: -3px 4px 8px rgba(0, 0, 0, 0.07);
+          box-shadow: -3px 4px 8px rgba(0, 0, 0, 0.07);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .phone-box .app-content .pricing-solution .solution-name {
+  width: 100%;
+  font-size: .69rem;
+  color: #ebe2f3;
+}
+
+.container .phone-box .app-content .pricing-solution .solution-input {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  margin: -.05rem .6rem 0 0;
+  width: 17px;
+  height: 17px;
+  border: 1px solid #eea3ff;
+  border-radius: 50%;
+}
+
+.container .phone-box .app-content .pricing-solution .price {
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.container .phone-box .app-content .input-msg {
+  position: relative;
+  width: 100%;
+  margin: 1.2rem 0 .65rem 0;
+}
+
+.container .phone-box .app-content .input-msg .input-text {
+  width: 100%;
+  background-color: white;
+  border: none;
+  outline: none;
+  border-radius: 140px;
+  padding: .9rem 1.3rem;
+}
+
+.container .phone-box .app-content .input-msg .input-text::-webkit-input-placeholder {
+  color: #c6cacd;
+  font-size: .8rem;
+}
+
+.container .phone-box .app-content .input-msg .input-text:-ms-input-placeholder {
+  color: #c6cacd;
+  font-size: .8rem;
+}
+
+.container .phone-box .app-content .input-msg .input-text::-ms-input-placeholder {
+  color: #c6cacd;
+  font-size: .8rem;
+}
+
+.container .phone-box .app-content .input-msg .input-text::placeholder {
+  color: #c6cacd;
+  font-size: .8rem;
+}
+
+.container .phone-box .app-content .input-msg .send-btn {
+  position: absolute;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  top: 50%;
+  right: 7px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: white;
+  background: #3e2753;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .text-box {
+  text-align: center;
+  width: 310px;
+  margin-top: -1.75rem;
+}
+
+@media screen and (min-width: 1000px) {
+  .container .text-box {
+    text-align: left;
+    width: 510px;
+    margin-top: 0;
+  }
+}
+
+.container .text-box .title {
+  font-size: 2.25rem;
+  font-weight: 500;
+  color: #3e2753;
+  margin-bottom: 1.6rem;
+}
+
+@media screen and (min-width: 1000px) {
+  .container .text-box .title {
+    font-size: 3rem;
+  }
+}
+
+.container .text-box .presentation {
+  color: #a39daa;
+  line-height: 1.8rem;
+}
+
+@media screen and (min-width: 1000px) {
+  .container .text-box .presentation {
+    font-size: 1.15rem;
+    line-height: 2rem;
+  }
+}
+
+/* FOOTER */
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  padding: 1.2rem 0;
+}
+
+.footer .attribution {
+  white-space: nowrap;
+  font-size: .7rem;
+  color: #a39daa;
+}
+
+@media screen and (min-width: 1000px) {
+  .footer .attribution {
+    font-size: .85rem;
+  }
+}
+
+.footer .attribution a {
+  color: #8838ff;
+}
+/*# sourceMappingURL=main.css.map */

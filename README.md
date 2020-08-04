@@ -14,3 +14,5 @@ You can find below the live versions of my solutions :
    
 [**Fylo Data Storage Component**](https://github.com/zathio/frontendmentor-challenges/tree/master/fylo-data-storage-component) : A modern and responsive data storage interface.
 
+[**Chat App Illustration**](https://github.com/zathio/frontendmentor-challenges/tree/master/chat-app-css-illustration) : A Chat App landing page with only CSS.
+
