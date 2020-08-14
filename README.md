@@ -1,5 +1,7 @@
 # Frontend Mentor Challenges
 
+![](logo-desktop.svg)
+
 Frontend Mentor provide challenges to improve your skills in **frontend web development**.
 
 For more informations check [Frontend Mentor website](https://www.frontendmentor.io/)
