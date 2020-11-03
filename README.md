@@ -4,7 +4,7 @@
 
 Frontend Mentor provide challenges to improve your skills in **frontend web development**.
 
-For more informations check [Frontend Mentor website](https://www.frontendmentor.io/)
+See my [Frontend Mentor Profile](https://www.frontendmentor.io/profile/zathio) and for more informations check [Frontend Mentor website](https://www.frontendmentor.io/)
 
 ## My submissions
 
