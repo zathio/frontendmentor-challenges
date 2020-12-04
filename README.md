@@ -18,3 +18,5 @@ You can find below the live versions of my solutions :
 
 - [**Chat App Illustration**](https://github.com/zathio/frontendmentor-challenges/tree/master/chat-app-css-illustration) : A Chat App landing page with only CSS.
 
+- [**Profile Card Component**](https://github.com/zathio/frontendmentor-challenges/tree/master/profile-card-component) : A profile card component made with Tailwind CSS.
+

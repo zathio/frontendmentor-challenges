@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" class="overflow-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Mentor | Profile Card Component</title>
+    <link rel="shortcut icon" href="img/favicon-32x32.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="h-screen overflow-hidden bg-primary flex items-center justify-center text-lg px-6">
+    <div class="relative max-w-350px w-full bg-white bg-card-texture bg-no-repeat bg-top rounded-2xl shadow-2xl">
+        <img src="img/bg-pattern-top.svg" alt="" class="max-w-max absolute -z-100 bg-top-pattern-position">
+        <img src="img/bg-pattern-bottom.svg" alt="" class="max-w-max absolute -z-100 bg-bottom-pattern-position md:bg-bottom-pattern-position-desktop">
+        <div class="flex flex-col items-center justify-center mt-22">
+            <img src="img/image-victor.jpg" alt="Profile Picture" class="rounded-full border-4 bg-white border-white">
+            <h1 class="font-bold text-secondary mt-5 mb-1">Victor Crest<span class="text-text font-normal ml-2">26</span></h1>
+            <h2 class="text-text text-sm">London</h2>
+        </div>
+        <div class="flex justify-evenly mt-6 py-6 border border-neutral border-r-0 border-b-0 border-l-0">
+            <div class="text-center">
+                <h3 class="font-bold text-secondary">80K</h3>
+                <p class="text-xs text-text tracking-widest">Followers</p>
+            </div>
+            <div class="text-center">
+                <h3 class="font-bold text-secondary">803K</h3>
+                <p class="text-xs text-text tracking-widest">Likes</p>
+            </div>
+            <div class="text-center">
+                <h3 class="font-bold text-secondary">1.4K</h3>
+                <p class="text-xs text-text tracking-widest">Photos</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
