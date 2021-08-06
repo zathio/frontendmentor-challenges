@@ -1,0 +1,4 @@
+node_modules
+design
+.DS_Store
+*.local

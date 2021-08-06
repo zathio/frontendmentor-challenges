@@ -1,0 +1,14 @@
+{
+  "name": "vite-tailwind",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.1",
+    "tailwindcss": "^2.2.7",
+    "vite": "^2.4.4"
+  }
+}
