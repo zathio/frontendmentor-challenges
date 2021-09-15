@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Select */
+/* Search bar */
+input[type="search"]::-webkit-search-cancel-button {
+    filter: brightness(0) invert(1);
+}
+
+/* Filter */
 #filter.show #icon {
     @apply rotate-180;
 }
