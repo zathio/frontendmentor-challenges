@@ -1,6 +1,6 @@
 const html = /*html*/`
     <div class="flex items-center justify-between pb-5 md:pb-10 text-sm">
-        <label for="serach" class="relative w-full max-w-[29rem] text-gray-dark dark:text-gray-light">
+        <label for="search" class="relative w-full max-w-[29rem] text-gray-dark dark:text-gray-light">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 select-none pointer-events-none absolute left-7 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -19,23 +19,25 @@ const html = /*html*/`
         </div>
     </div>
     <ul id="countries-list" class="list-none grid grid-cols-4 gap-16">
-        ${(() => /*html*/`<li class="block rounded-md overflow-hidden bg-gray-light dark:bg-blue-light shadow-md h-[22rem] animate-pulse">
-            <div class="bg-gray-dark/60 w-full h-[47%]"></div>
-            <div class="p-6">
-                <div class="w-1/3 h-5 bg-gray-dark/60 rounded-sm"></div>
-                <ul class="text-sm space-y-3 mt-6">
-                    <li class="w-2/3 h-3.5 bg-gray-dark/60 rounded-sm"></li>
-                    <li class="w-1/2 h-3.5 bg-gray-dark/60 rounded-sm"></li>
-                    <li class="w-1/4 h-3.5 bg-gray-dark/60 rounded-sm"></li>
-                </ul>
-            </div>
-        </li>`.repeat(8))()}
+        ${ /*html*/`
+            <li class="block rounded-md overflow-hidden bg-gray-light dark:bg-blue-light shadow-md h-[22rem] animate-pulse">
+                <div class="bg-gray-dark/60 w-full h-[47%]"></div>
+                <div class="p-6">
+                    <div class="w-1/3 h-5 bg-gray-dark/60 rounded-sm"></div>
+                    <ul class="text-sm space-y-3 mt-6">
+                        <li class="w-2/3 h-3.5 bg-gray-dark/60 rounded-sm"></li>
+                        <li class="w-1/2 h-3.5 bg-gray-dark/60 rounded-sm"></li>
+                        <li class="w-1/4 h-3.5 bg-gray-dark/60 rounded-sm"></li>
+                    </ul>
+                </div>
+            </li>
+        `.repeat(12)}
     </ul>
 `;
 
 const card = country => /*html*/`
-    <li>
-        <a href="/${country.name}" data-region="${country.region}" class="block h-[22rem] rounded-md overflow-hidden bg-gray-light dark:bg-blue-light shadow-md hover:bg-gray-dark/10 hover:-translate-y-1 will-change dark:hover:bg-gray-light/10 active:bg-gray-dark/20 dark:active:bg-gray-light/20 active:translate-y-0 duration-100">
+    <li data-name="${country.name}" data-region="${country.region}">
+        <a href="/${country.name}" class="block h-[22rem] rounded-md overflow-hidden bg-gray-light dark:bg-blue-light shadow-md hover:bg-gray-dark/10 hover:-translate-y-1 will-change dark:hover:bg-gray-light/10 active:bg-gray-dark/20 dark:active:bg-gray-light/20 active:translate-y-0 duration-100">
             <img src="${country.flag}" alt="Flag" class="w-full h-[47%] object-cover">
             <div class="p-6">
                 <p class="font-bold text-lg whitespace-nowrap overflow-hidden overflow-ellipsis">${country.name}</p>
@@ -71,8 +73,9 @@ export default () => {
     function filterCountries() {
         // All lowercase and special accents removed to avoid missing matches
         let cleanStr = str => str.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
+        
         [...countriesList.children].forEach(el => {
-            if (cleanStr(el.innerHTML).includes(cleanStr(search.value)) && cleanStr(el.innerHTML).includes(cleanStr(name.dataset.region))) {
+            if (cleanStr(el.dataset.name).includes(cleanStr(search.value)) && cleanStr(el.dataset.region).includes(cleanStr(name.dataset.region))) {
                 el.classList.remove("hidden");
             } else {
                 el.classList.add("hidden")
@@ -86,15 +89,14 @@ export default () => {
     // Region Filter
     app.addEventListener("click", e => {
         if (filter.contains(e.target)) {
-            filter.classList.toggle("show");
-            
             if (options.contains(e.target)) {
                 name.innerHTML = e.target.innerHTML;
                 name.dataset.region = e.target.dataset.region;
 
                 filterCountries();
-                filter.click();
             }
+
+            filter.classList.toggle("show");
         } else {
             filter.classList.remove("show")
         }
@@ -105,14 +107,15 @@ export default () => {
         .then(res => res.json())
         .then(data => {
             countriesList.innerHTML = "";
-            for (let i=0; i<data.length; i++) {
-                countriesList.innerHTML += card(data[i]);
 
+            data.forEach(d => {
+                countriesList.innerHTML += card(d);
+                
                 let clone = options.firstElementChild.cloneNode(true);
-                clone.innerHTML = data[i].region;
-                clone.dataset.region = data[i].region;
-                !options.innerHTML.includes(data[i].region) && options.appendChild(clone);
-            }
+                clone.innerHTML = d.region;
+                clone.dataset.region = d.region;
+                !options.innerHTML.includes(d.region) && options.appendChild(clone);
+            });
         })
     .catch(console.error);
 }

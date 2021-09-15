@@ -21,3 +21,10 @@ input[type="search"]::-webkit-search-cancel-button {
 #filter.show ul {
     @apply visible opacity-100;
 }
+
+html {
+    --dur: .1s;
+}
+.duration-100 {
+    transition-duration: var(--dur) !important;
+}
