@@ -1,3 +1,6 @@
+// Router
+import "./router.js";
+
 // Theme toggle
 const themeBtn = document.querySelector("#theme-toggle");
 

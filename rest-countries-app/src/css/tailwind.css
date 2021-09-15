@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Select */
+#filter.show #icon {
+    @apply rotate-180;
+}
+#filter.show ul {
+    @apply visible opacity-100;
+}
