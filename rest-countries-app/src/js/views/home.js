@@ -1,42 +1,48 @@
 const html = /*html*/`
-    <div class="flex items-center justify-between pb-5 md:pb-10">
-        <label for="serach" class="relative w-full max-w-[29rem]">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 select-none pointer-events-none absolute left-8 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <div class="flex items-center justify-between pb-5 md:pb-10 text-sm">
+        <label for="serach" class="relative w-full max-w-[29rem] text-gray-dark dark:text-gray-light">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 select-none pointer-events-none absolute left-7 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
-            <input type="search" id="search" placeholder="Search for a country..." class="rounded-md shadow-md bg-blue-light py-4 px-5 pl-20 w-full placeholder-current outline-none ring-gray-dark/40 dark:ring-gray-light/40 lg:hover:bg-gray-dark/10 lg:dark:hover:bg-gray-light/10 active:bg-gray-dark/10 dark:active:bg-gray-light/10 active:ring-2 focus:ring-2 duration-100">
+            <input type="search" id="search" placeholder="Search for a country..." class="rounded-md shadow-md bg-gray-light dark:bg-blue-light py-4 px-5 pl-[4.5rem] w-full placeholder-current outline-none ring-gray-dark/40 dark:ring-gray-light/40 hover:bg-gray-dark/10 dark:hover:bg-gray-light/10 active:bg-gray-dark/10 dark:active:bg-gray-light/10 active:ring-2 focus:ring-2 duration-100">
         </label>
         <div id="filter" class="relative">
-            <button class="flex items-center justify-between select-none rounded-md shadow-md bg-blue-light py-4 px-5 w-52 ring-gray-dark/40 dark:ring-gray-light/40 lg:hover:bg-gray-dark/10 lg:dark:hover:bg-gray-light/10 active:bg-gray-dark/10 dark:active:bg-gray-light/10 active:ring-2 focus:ring-2 duration-100">
-                <span id="name">Filter by Region</span>
-                <svg id="icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 duration-100" viewBox="0 0 20 20" fill="currentColor">
+            <button class="flex items-center justify-between select-none rounded-md shadow-md bg-gray-light dark:bg-blue-light py-4 px-5 w-48 ring-gray-dark/40 dark:ring-gray-light/40 hover:bg-gray-dark/10 dark:hover:bg-gray-light/10 active:bg-gray-dark/10 dark:active:bg-gray-light/10 active:ring-2 focus:ring-2 duration-100">
+                <span id="name" data-region="">Filter by Region</span>
+                <svg id="icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 duration-100 -mr-px" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
             </button>
-            <ul class="invisible opacity-0 duration-100 absolute top-full left-0 mt-1 w-full rounded-md shadow-md bg-blue-light py-3">
-                <li class="select-none py-1 px-5 cursor-pointer hover:bg-gray-dark">All</li>
-                <li class="select-none py-1 px-5 cursor-pointer hover:bg-gray-dark">Africa</li>
-                <li class="select-none py-1 px-5 cursor-pointer hover:bg-gray-dark">Americas</li>
-                <li class="select-none py-1 px-5 cursor-pointer hover:bg-gray-dark">Asia</li>
-                <li class="select-none py-1 px-5 cursor-pointer hover:bg-gray-dark">Europe</li>
-                <li class="select-none py-1 px-5 cursor-pointer hover:bg-gray-dark">Oceania</li>
-                <li class="select-none py-1 px-5 cursor-pointer hover:bg-gray-dark">Polar</li>
+            <ul class="invisible opacity-0 duration-100 absolute z-10 top-full left-0 mt-2 w-full rounded-md shadow-md bg-gray-light dark:bg-blue-light py-3">
+                <li data-region="" class="select-none py-1 px-5 cursor-pointer hover:bg-gray-dark/10 dark:hover:bg-gray-light/10 active:bg-gray-dark/20 dark:active:bg-gray-light/20 duration-100">All</li>
             </ul>
         </div>
     </div>
-    <ul id="countries-list" class="list-none grid grid-cols-4 gap-16"></ul>
+    <ul id="countries-list" class="list-none grid grid-cols-4 gap-16">
+        ${(() => /*html*/`<li class="block rounded-md overflow-hidden bg-gray-light dark:bg-blue-light shadow-md h-[22rem] animate-pulse">
+            <div class="bg-gray-dark/60 w-full h-[47%]"></div>
+            <div class="p-6">
+                <div class="w-1/3 h-5 bg-gray-dark/60 rounded-sm"></div>
+                <ul class="text-sm space-y-3 mt-6">
+                    <li class="w-2/3 h-3.5 bg-gray-dark/60 rounded-sm"></li>
+                    <li class="w-1/2 h-3.5 bg-gray-dark/60 rounded-sm"></li>
+                    <li class="w-1/4 h-3.5 bg-gray-dark/60 rounded-sm"></li>
+                </ul>
+            </div>
+        </li>`.repeat(8))()}
+    </ul>
 `;
 
 const card = country => /*html*/`
     <li>
-        <a href="/${country.name}" data-region="${country.region}" class="block h-full rounded-md overflow-hidden bg-blue-light shadow-md">
+        <a href="/${country.name}" data-region="${country.region}" class="block h-[22rem] rounded-md overflow-hidden bg-gray-light dark:bg-blue-light shadow-md hover:bg-gray-dark/10 hover:-translate-y-1 will-change dark:hover:bg-gray-light/10 active:bg-gray-dark/20 dark:active:bg-gray-light/20 active:translate-y-0 duration-100">
             <img src="${country.flag}" alt="Flag" class="w-full h-[47%] object-cover">
             <div class="p-6">
-                <p class="font-bold text-lg">${country.name}</p>
+                <p class="font-bold text-lg whitespace-nowrap overflow-hidden overflow-ellipsis">${country.name}</p>
                 <ul class="text-sm space-y-1.5 mt-4">
                     <li>
                         <span class="font-semibold">Population:</span>
-                        ${country.population}
+                        ${country.population.toLocaleString("en-US")}
                     </li>
                     <li>
                         <span class="font-semibold">Region:</span>
@@ -52,43 +58,60 @@ const card = country => /*html*/`
     </li>
 `;
 
-function filterCountries(list, keyword, special = "") {
-    // All lowercase to avoid missing matches
-    list.forEach(el => {
-        el.classList.remove("hidden");
-        keyword.toLowerCase() !== special.toLowerCase() && (!el.innerHTML.toLowerCase().includes(keyword.toLowerCase()) && el.classList.add("hidden"));
-    });
-}
-
 const app = document.querySelector("#app");
-
 export default () => {
     app.innerHTML = html;
 
-    let filter = app.querySelector("#filter"),
-        search = app.querySelector("#search"),
-        options = filter.querySelectorAll("li"),
+    let search = app.querySelector("#search"),
+        filter = app.querySelector("#filter"),
+        name = filter.querySelector("#name"),
+        options = filter.querySelector("ul"),
         countriesList = app.querySelector("#countries-list");
 
+    function filterCountries() {
+        // All lowercase and special accents removed to avoid missing matches
+        let cleanStr = str => str.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
+        [...countriesList.children].forEach(el => {
+            if (cleanStr(el.innerHTML).includes(cleanStr(search.value)) && cleanStr(el.innerHTML).includes(cleanStr(name.dataset.region))) {
+                el.classList.remove("hidden");
+            } else {
+                el.classList.add("hidden")
+            }
+        });
+    }
+    
     // Search Filter
-    search.addEventListener("input", () => {
-        filterCountries([...countriesList.children], search.value)
-    });
+    search.oninput = () => filterCountries();
 
     // Region Filter
     app.addEventListener("click", e => {
-        filter.contains(e.target) ? filter.classList.toggle("show") : filter.classList.remove("show");
-    });
-    options.forEach(opt => opt.onclick = () => {
-        filter.querySelector("#name").innerHTML = opt.innerHTML;
-        filterCountries([...countriesList.children], opt.innerHTML, "all");
+        if (filter.contains(e.target)) {
+            filter.classList.toggle("show");
+            
+            if (options.contains(e.target)) {
+                name.innerHTML = e.target.innerHTML;
+                name.dataset.region = e.target.dataset.region;
+
+                filterCountries();
+                filter.click();
+            }
+        } else {
+            filter.classList.remove("show")
+        }
     });
 
+    // Get datas
     fetch("https://restcountries.eu/rest/v2/all")
         .then(res => res.json())
         .then(data => {
+            countriesList.innerHTML = "";
             for (let i=0; i<data.length; i++) {
                 countriesList.innerHTML += card(data[i]);
+
+                let clone = options.firstElementChild.cloneNode(true);
+                clone.innerHTML = data[i].region;
+                clone.dataset.region = data[i].region;
+                !options.innerHTML.includes(data[i].region) && options.appendChild(clone);
             }
         })
     .catch(console.error);

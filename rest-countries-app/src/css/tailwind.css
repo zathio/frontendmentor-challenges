@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    /* Fix blurry transform */
+    .will-change {
+        will-change: transform;
+    }
+}
+
 /* Search bar */
 input[type="search"]::-webkit-search-cancel-button {
     filter: brightness(0) invert(1);
