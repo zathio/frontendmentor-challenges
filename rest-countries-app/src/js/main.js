@@ -1,9 +1,6 @@
 // Router
 import "./router.js";
 
-// Fix Scroll
-history.scrollRestoration = "manual";
-
 // Theme toggle
 const themeBtn = document.querySelector("#theme-toggle");
 
