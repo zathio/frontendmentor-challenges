@@ -38,7 +38,7 @@ const html = /*html*/`
 const card = country => /*html*/`
     <li data-name="${country.name}" data-region="${country.region}">
         <a href="/${country.name}" class="block h-[22rem] rounded-md overflow-hidden bg-gray-light dark:bg-blue-light shadow-md hover:bg-gray-dark/10 hover:-translate-y-1 will-change dark:hover:bg-gray-light/10 active:bg-gray-dark/20 dark:active:bg-gray-light/20 active:translate-y-0 duration-100">
-            <img src="${country.flag}" alt="Flag" class="w-full h-[47%] object-cover">
+            <img src="${country.flag}" alt="Flag" class="w-full h-[47%] object-cover bg-gray-dark/60">
             <div class="p-6">
                 <p class="font-bold text-lg whitespace-nowrap overflow-hidden overflow-ellipsis">${country.name}</p>
                 <ul class="text-sm space-y-1.5 mt-4">
@@ -52,7 +52,7 @@ const card = country => /*html*/`
                     </li>
                     <li>
                         <span class="font-semibold">Capital:</span>
-                        ${country.capital}
+                        ${country.capital || "Unknown"}
                     </li>
                 </ul>
             </div>
@@ -89,7 +89,7 @@ export default () => {
     // Region Filter
     app.addEventListener("click", e => {
         if (filter.contains(e.target)) {
-            if (options.contains(e.target)) {
+            if ([...options.children].includes(e.target)) {
                 name.innerHTML = e.target.innerHTML;
                 name.dataset.region = e.target.dataset.region;
 
