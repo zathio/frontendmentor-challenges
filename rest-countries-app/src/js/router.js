@@ -22,7 +22,7 @@ function router() {
 
 // Handle navigation
 window.addEventListener("click", e => {
-    if (e.target.matches("[data-country]")) {
+    if (e.target.matches("a[data-country]")) {
         e.preventDefault();
         history.pushState("", "", e.target.href);
         router();

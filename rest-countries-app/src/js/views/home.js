@@ -36,8 +36,8 @@ const html = {
         </ul>
     `,
     card: country => /*html*/`
-        <li data-name="${country.name}" data-region="${country.region}">
-            <a href="/${country.name}" class="block h-[22rem] rounded-md overflow-hidden outline-none bg-gray-light dark:bg-blue-light shadow-md hover:bg-gray-dark/10 hover:-translate-y-1 will-change dark:hover:bg-gray-light/10 active:bg-gray-dark/20 dark:active:bg-gray-light/20 active:translate-y-0 ring-gray-dark/40 dark:ring-gray-light/40 focus-visible:ring duration-100">
+        <li>
+            <a href="/${country.name}" data-country="${country.name}" data-region="${country.region}" class="block h-[22rem] rounded-md overflow-hidden outline-none bg-gray-light dark:bg-blue-light shadow-md hover:bg-gray-dark/10 hover:-translate-y-1 will-change dark:hover:bg-gray-light/10 active:bg-gray-dark/20 dark:active:bg-gray-light/20 active:translate-y-0 ring-gray-dark/40 dark:ring-gray-light/40 focus-visible:ring duration-100">
                 <img src="${country.flag}" alt="Flag" class="w-full h-[47%] object-cover bg-gray-dark/60">
                 <div class="p-6">
                     <p class="font-bold text-lg whitespace-nowrap overflow-hidden overflow-ellipsis">${country.name}</p>
@@ -82,7 +82,7 @@ export default app => {
     // Filter by hiding speficied cards
     function filterCountries() {
         [...countriesList.children].forEach(el => {
-            (cleanStr(el.dataset.name).includes(cleanStr(search.value)) && cleanStr(el.dataset.region).includes(cleanStr(name.dataset.region === "All" ? "" : name.dataset.region))) ? el.classList.remove("hidden") : el.classList.add("hidden");
+            (cleanStr(el.firstElementChild.dataset.country).includes(cleanStr(search.value)) && cleanStr(el.firstElementChild.dataset.region).includes(cleanStr(name.dataset.region === "All" ? "" : name.dataset.region))) ? el.classList.remove("hidden") : el.classList.add("hidden");
         });
     };
     
