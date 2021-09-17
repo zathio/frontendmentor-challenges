@@ -6,11 +6,13 @@ const routes = {
     "/detail": { title: "Detail", render: detail },
 };
 
+const app = document.querySelector("#app");
+
 function router() {
     let view = routes[location.pathname];
 
     if (view) {
-        view.render();
+        view.render(app);
         document.title = view.title;
     } else {
         history.replaceState("", "", "/");

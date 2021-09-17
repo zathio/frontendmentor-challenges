@@ -1,6 +1,4 @@
-const app = document.querySelector("#app");
-
-export default () => {
+export default app => {
     app.innerHTML = /*html*/`
         <h1>Detail</h1>
     `;
