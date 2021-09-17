@@ -73,7 +73,7 @@ export default () => {
         countriesList = app.querySelector("#countries-list");
 
     function filterCountries() {
-        // All lowercase and special accents removed to avoid missing matches
+        // Remove all accents and convert to lowercase to avoid missing matches
         let cleanStr = str => str.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
         
         [...countriesList.children].forEach(el => {
