@@ -93,7 +93,7 @@ export default app => {
     window.addEventListener("click", e => {
         if (filter.contains(e.target)) {
             if (e.target.matches("button[data-region]")) {
-                name.innerHTML = e.target.innerHTML;
+                name.textContent = e.target.textContent;
                 name.dataset.region = e.target.dataset.region;
                 filterCountries();
             }
