@@ -1,13 +1,11 @@
 import home from "./views/home.js";
 import detail from "./views/detail.js";
 
-const app = document.querySelector("#app"),
-      formatTitle = str => decodeURI(str.charAt(0).toUpperCase() + str.slice(1));
+const app = document.querySelector("#app");
 
 function router() {
-    location.pathname === "/" ? home(app) : detail(app);
-    document.title = formatTitle(location.pathname.split("/")[1]) || "Countries App";
-    history.replaceState("", "", document.title);
+    document.title = decodeURI(location.pathname.charAt(1).toUpperCase() + location.pathname.slice(2)) || "Countries App";
+    location.pathname === "/" ? home(app) : (detail(app), history.replaceState("", "", document.title));
 };
 
 // Handle navigation
