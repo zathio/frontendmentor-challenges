@@ -1,23 +1,11 @@
 import home from "./views/home.js";
 import detail from "./views/detail.js";
 
-const routes = {
-    "/": { title: "Home", render: home },
-    "/detail": { title: "Detail", render: detail },
-};
-
 const app = document.querySelector("#app");
 
 function router() {
-    let view = routes[location.pathname];
-
-    if (view) {
-        view.render(app);
-        document.title = view.title;
-    } else {
-        history.replaceState("", "", "/");
-        router();
-    }
+    document.title = location.pathname.split("/")[1] || "Countries App";
+    location.pathname === "/" ? home(app) : detail(app);
 };
 
 // Handle navigation
