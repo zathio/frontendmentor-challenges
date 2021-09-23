@@ -37,8 +37,8 @@ const html = {
     `,
     card: country => /*html*/`
         <li>
-            <a href="/${country.name}" data-country="${country.name}" data-region="${country.region}" class="block h-[22rem] rounded-md overflow-hidden outline-none bg-gray-light dark:bg-blue-light shadow-md hover:bg-gray-dark/10 hover:-translate-y-1 will-change dark:hover:bg-gray-light/10 active:bg-gray-dark/20 dark:active:bg-gray-light/20 active:translate-y-0 ring-gray-dark/40 dark:ring-gray-light/40 focus-visible:ring duration-100">
-                <img src="${country.flag}" alt="Flag" class="w-full h-[47%] object-cover bg-gray-dark/60">
+            <a href="/${country.name}" data-country="${country.name}" data-region="${country.continent}" class="block h-[22rem] rounded-md overflow-hidden outline-none bg-gray-light dark:bg-blue-light shadow-md hover:bg-gray-dark/10 hover:-translate-y-1 will-change dark:hover:bg-gray-light/10 active:bg-gray-dark/20 dark:active:bg-gray-light/20 active:translate-y-0 ring-gray-dark/40 dark:ring-gray-light/40 focus-visible:ring duration-100">
+                <img src="${country.flags[0]}" alt="Flag" class="w-full h-[47%] object-cover bg-gray-dark/60">
                 <div class="p-6">
                     <p class="font-bold text-lg whitespace-nowrap overflow-hidden overflow-ellipsis">${country.name}</p>
                     <ul class="text-sm space-y-1.5 mt-4">
@@ -48,7 +48,7 @@ const html = {
                         </li>
                         <li>
                             <span class="font-semibold">Region:</span>
-                            ${country.region || "Unknown"}
+                            ${country.continent || "Unknown"}
                         </li>
                         <li>
                             <span class="font-semibold">Capital:</span>
@@ -105,14 +105,14 @@ export default app => {
     });
 
     // Get datas
-    fetch("https://restcountries.eu/rest/v2/all")
+    fetch("https://restcountries.com/v2/all")
         .then(res => res.json())
         .then(data => {
             countriesList.innerHTML = "";
-
+            
             data.forEach(d => {
                 countriesList.insertAdjacentHTML("beforeend", html.card(d));
-                !optionsList.includes(d.region) && optionsList.push(d.region);
+                !optionsList.includes(d.continent) && optionsList.push(d.continent);
             });
 
             optionsList.sort() && optionsList.forEach(o => o && options.insertAdjacentHTML("beforeend", html.option(o)));
