@@ -1,14 +1,13 @@
 const html = {
     skeleton: () => /*html*/`
-        skeleton
-    `,
-    base: country => /*html*/`
         <a href="/" data-link class="inline-flex items-center select-none rounded-md shadow-md bg-gray-light dark:bg-blue-light my-6 mb-16 py-2 px-10 ring-gray-dark/40 dark:ring-gray-light/40 hover:bg-gray-dark/10 dark:hover:bg-gray-light/10 active:bg-gray-dark/10 dark:active:bg-gray-light/10 active:ring-2 focus:ring-2 outline-none duration-100 text-lg">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             <span>Back</span>
         </a>
+    `,
+    base: country => /*html*/`
         <div class="flex items-center">
             <img src="${country.flags[0]}" alt="Flag" class="w-1/2 shadow-lg">
             <div class="w-1/2">
@@ -67,7 +66,7 @@ export default app => {
     fetch("https://restcountries.com/v2/name" + location.pathname)
         .then(res => res.json())
         .then(data => {
-            app.innerHTML = html.base(data[0]);
+            app.insertAdjacentHTML("beforeend", html.base(data[0]));
         })
     .catch(() => {
         document.querySelector("[href='/']").click();
