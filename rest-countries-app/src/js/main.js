@@ -2,14 +2,15 @@
 import "./router.js";
 
 // Theme toggle
-const themeBtn = document.querySelector("#theme-toggle");
+const themeBtn = document.querySelector("#theme-toggle"),
+      html = document.documentElement;
 
 themeBtn.addEventListener("input", () => {
     // Remove transition duration to avoir slow change
-    document.documentElement.style.setProperty("--dur", "0s");
-    document.documentElement.classList.toggle("dark");
+    html.style.setProperty("--dur", "0s");
+    html.classList.toggle("dark");
     setTimeout(() => {
-        document.documentElement.style.setProperty("--dur", ".1s");
+        html.style.setProperty("--dur", ".1s");
     }, 100);
-    localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : null;
+    localStorage.theme = html.classList.contains("dark") ? "dark" : null;
 });

@@ -25,11 +25,11 @@ const html = {
                     <div class="bg-gray-dark/60 w-full h-[47%]"></div>
                     <div class="p-6">
                         <div class="w-1/3 h-5 bg-gray-dark/60 rounded-sm"></div>
-                        <ul class="text-sm space-y-3 mt-6">
-                            <li class="w-2/3 h-3.5 bg-gray-dark/60 rounded-sm"></li>
-                            <li class="w-1/2 h-3.5 bg-gray-dark/60 rounded-sm"></li>
-                            <li class="w-1/4 h-3.5 bg-gray-dark/60 rounded-sm"></li>
-                        </ul>
+                        <div class="text-sm space-y-3 mt-6">
+                            <div class="w-2/3 h-3.5 bg-gray-dark/60 rounded-sm"></div>
+                            <div class="w-[40%] h-3.5 bg-gray-dark/60 rounded-sm"></div>
+                            <div class="w-1/2 h-3.5 bg-gray-dark/60 rounded-sm"></div>
+                        </div>
                     </div>
                 </li>
             `.repeat(12)}
