@@ -111,11 +111,11 @@ export default app => {
             countriesList.innerHTML = "";
             
             data.forEach(d => {
-                countriesList.insertAdjacentHTML("beforeend", html.card(d));
+                countriesList.insertAdjacentHTML("beforeend", html.card(d).trim());
                 !optionsList.includes(d.region) && optionsList.push(d.region);
             });
 
-            optionsList.sort() && optionsList.forEach(o => o && options.insertAdjacentHTML("beforeend", html.option(o)));
+            optionsList.sort() && optionsList.forEach(o => o && options.insertAdjacentHTML("beforeend", html.option(o).trim()));
         })
     .catch(console.error);
 }
