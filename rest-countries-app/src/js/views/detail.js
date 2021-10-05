@@ -80,7 +80,7 @@ const html = {
         </div>
     `,
     border: country => /*html*/`
-        <a href="${country.name.common}" class="inline-block mb-2 sm:-mt-1 text-center rounded-md shadow-md bg-gray-light dark:bg-blue-light whitespace-nowrap px-2 w-[6.6rem] h-8 leading-8 overflow-hidden overflow-ellipsis ring-gray-dark/40 dark:ring-gray-light/40 hover:bg-gray-dark/10 dark:hover:bg-gray-light/10 active:bg-gray-dark/10 dark:active:bg-gray-light/10 active:ring-2 focus:ring-2 outline-none duration-100 mr-1.5">${country.name.common}</a>
+        <a href="${country.name.common}" data-link class="inline-block mb-2 sm:-mt-1 text-center rounded-md shadow-md bg-gray-light dark:bg-blue-light whitespace-nowrap px-2 w-[6.6rem] h-8 leading-8 overflow-hidden overflow-ellipsis ring-gray-dark/40 dark:ring-gray-light/40 hover:bg-gray-dark/10 dark:hover:bg-gray-light/10 active:bg-gray-dark/10 dark:active:bg-gray-light/10 active:ring-2 focus:ring-2 outline-none duration-100 mr-1.5">${country.name.common}</a>
     `
 };
 
@@ -120,6 +120,6 @@ export default app => {
     .catch(err => {
         // Go to home page if error in the request
         console.error(err);
-        // document.querySelector("[href='/']").click();
+        document.querySelector("[href='/']").click();
     });
 }
