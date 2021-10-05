@@ -37,10 +37,10 @@ const html = {
     `,
     card: country => /*html*/`
         <li>
-            <a href="/${country.name}" data-link data-country="${country.name}" data-region="${country.region}" class="block h-[22rem] rounded-md overflow-hidden outline-none bg-gray-light dark:bg-blue-light shadow-md hover:bg-gray-dark/10 hover:-translate-y-1 will-change dark:hover:bg-gray-light/10 active:bg-gray-dark/20 dark:active:bg-gray-light/20 active:translate-y-0 ring-gray-dark/40 dark:ring-gray-light/40 focus-visible:ring duration-100">
-                <img src="${country.flag}" alt="Flag" loading="lazy" class="w-full h-1/2 lg:h-[47%] object-cover bg-gray-dark/60">
+            <a href="/${country.name.common}" data-link data-country="${country.name.common}" data-region="${country.region}" class="block h-[22rem] rounded-md overflow-hidden outline-none bg-gray-light dark:bg-blue-light shadow-md hover:bg-gray-dark/10 hover:-translate-y-1 will-change dark:hover:bg-gray-light/10 active:bg-gray-dark/20 dark:active:bg-gray-light/20 active:translate-y-0 ring-gray-dark/40 dark:ring-gray-light/40 focus-visible:ring duration-100">
+                <img src="${country.flags.svg}" alt="Flag" loading="lazy" class="w-full h-1/2 lg:h-[47%] object-cover bg-gray-dark/60">
                 <div class="p-6">
-                    <p class="font-bold text-lg whitespace-nowrap overflow-hidden overflow-ellipsis">${country.name}</p>
+                    <p class="font-bold text-lg whitespace-nowrap overflow-hidden overflow-ellipsis">${country.name.common}</p>
                     <ul class="text-sm space-y-1.5 mt-4">
                         <li>
                             <span class="font-semibold">Population:</span>
@@ -105,7 +105,7 @@ export default app => {
     });
 
     // Get datas
-    fetch("https://restcountries.com/v2/all")
+    fetch("https://restcountries.com/v3.1/all")
         .then(res => res.json())
         .then(data => {
             countriesList.innerHTML = "";

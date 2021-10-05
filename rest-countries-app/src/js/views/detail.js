@@ -10,35 +10,35 @@ const html = {
             <div class="lg:w-1/2 shadow-lg mx-auto mb-14 lg:mb-0 bg-gray-dark/60" style="aspect-ratio: 4/3"></div>
             <div class="lg:w-1/2">
                 <div class="w-36 h-8 bg-gray-dark/60 rounded-sm"></div>
-                <div class="grid sm:grid-cols-2 gap-x-6 justify-between mt-10 mb-16">
-                    <div class="space-y-5">
+                <div class="grid sm:grid-cols-2 gap-x-6 justify-between mt-10 mb-14">
+                    <div class="space-y-3">
                         <div class="w-[58%] h-5 bg-gray-dark/60 rounded-sm"></div>
                         <div class="w-[69%] h-5 bg-gray-dark/60 rounded-sm"></div>
                         <div class="w-[38%] h-5 bg-gray-dark/60 rounded-sm"></div>
                         <div class="w-[80%] h-5 bg-gray-dark/60 rounded-sm"></div>
                         <div class="w-[42%] h-5 bg-gray-dark/60 rounded-sm"></div>
                     </div>
-                    <div class="mt-10 lg:mt-0 space-y-5">
+                    <div class="mt-10 lg:mt-0 space-y-3">
                         <div class="w-[62%] h-5 bg-gray-dark/60 rounded-sm"></div>
                         <div class="w-[45%] h-5 bg-gray-dark/60 rounded-sm"></div>
                         <div class="w-[89%] h-5 bg-gray-dark/60 rounded-sm"></div>
                     </div>
                 </div>
                 <div class="w-[90%] h-5 bg-gray-dark/60 rounded-sm"></div>
-                <div class="w-[40%] h-5 bg-gray-dark/60 rounded-sm mt-5"></div>
+                <div class="w-[40%] h-5 bg-gray-dark/60 rounded-sm mt-4"></div>
             </div>
         </div>
     `,
     base: country => /*html*/`
-        <div class="px-3 sm:px-0 lg:flex lg:justify-between lg:items-center lg:gap-x-20 xl:gap-x-32 mt-10">
-            <img src="${country.flag}" alt="Flag" class="object-contain lg:w-1/2 shadow-lg mx-auto mb-14 lg:mb-0">
-            <div class="lg:w-1/2">
-                <h1 class="font-bold text-[2rem]">${country.name}</h1>
+        <div class="px-3 sm:px-0 lg:grid lg:grid-cols-2 lg:justify-between lg:items-center lg:gap-x-20 xl:gap-x-32 mt-10">
+            <img src="${country.flags.svg}" alt="Flag" class="w-full object-cover shadow-lg bg-gray-dark/60 mx-auto mb-14 lg:mb-0" style="aspect-ratio: 4/3">
+            <div>
+                <h1 class="font-bold text-[2rem]">${country.name.common}</h1>
                 <div class="text-lg lg:text-base grid sm:grid-cols-2 gap-x-6 justify-between mt-6 mb-16">
                     <ul class="space-y-2">
                         <li>
                             <span class="font-semibold">Native Name:</span>
-                            ${get(country.nativeName)}
+                            ${get(country.name.nativeName)}
                         </li>
                         <li>
                             <span class="font-semibold">Population:</span>
@@ -60,7 +60,7 @@ const html = {
                     <ul class="mt-10 lg:mt-0 space-y-2">
                         <li>
                             <span class="font-semibold">Top Level Domain:</span>
-                            ${get(country.topLevelDomain)}
+                            ${get(country.tld)}
                         </li>
                         <li>
                             <span class="font-semibold">Currencies:</span>
@@ -75,24 +75,22 @@ const html = {
                 <div>
                     <span class="font-semibold mr-4 sm:float-left">Border Countries:</span>
                     <div id="border-box" class="mt-6">
-                        ${ /*html*/ `
-                            <div class="inline-block mb-2 sm:-mt-1 w-[6.6rem] h-[2.1rem] mr-1.5 invisible"></div>
-                        `.repeat(country.borders.length)}
+                        ${ /*html*/`
+                            <a href="" class="inline-block mb-2 sm:-mt-1 text-center rounded-md shadow-md bg-gray-light dark:bg-blue-light whitespace-nowrap px-2 w-[6.6rem] h-8 leading-8 overflow-hidden overflow-ellipsis ring-gray-dark/40 dark:ring-gray-light/40 hover:bg-gray-dark/10 dark:hover:bg-gray-light/10 active:bg-gray-dark/10 dark:active:bg-gray-light/10 active:ring-2 focus:ring-2 outline-none duration-100 mr-1.5 opacity-0"></a>
+                        `.repeat(country.borders ? country.borders.length : 0)}
                     </div>
                 </div>
             </div>
         </div>
-    `,
-    border: name => /*html*/`
-        <a href="/${name}" class="inline-block mb-2 sm:-mt-1 text-center rounded-md shadow-md bg-gray-light dark:bg-blue-light whitespace-nowrap py-[.3rem] px-2 w-[6.6rem] overflow-hidden overflow-ellipsis ring-gray-dark/40 dark:ring-gray-light/40 hover:bg-gray-dark/10 dark:hover:bg-gray-light/10 active:bg-gray-dark/10 dark:active:bg-gray-light/10 active:ring-2 focus:ring-2 outline-none duration-100 mr-1.5 animate-fade">${name}</a>
     `
 };
 
 // Treat each datas types
 function get(data) {
     if (!data) return "Unknown";
-    if (typeof data[0] === "object") return data.map(d => d.name).join(", ");
-    if (Array.isArray(data)) return data.join(", ");
+    if (data.name || data.common) return data.name || data.common;
+    if (Array.isArray(data)) return data.map(d => get(d)).join(", ");
+    if (typeof data === "object") return Object.values(data).map(d => get(d)).join(", ");
     return data;
 };
 
@@ -100,11 +98,18 @@ function get(data) {
 function addBorders(codes) {
     let box = app.querySelector("#border-box");
 
+    if (!codes) {
+        box.remove();
+        return;
+    }
+
     codes.forEach((c, i) => {
-        fetch("https://restcountries.com/v2/alpha/" + c)
+        fetch("https://restcountries.com/v3.1/alpha/" + c)
         .then(res => res.json())
         .then(data => {
-            box.children[i].outerHTML = html.border(data.name);
+            box.children[i].href = data[0].name.common;
+            box.children[i].textContent = data[0].name.common;
+            box.children[i].classList.add("animate-fade");
         });
     });
 };
@@ -113,14 +118,15 @@ export default app => {
     app.innerHTML = html.skeleton();
     
     // Get datas
-    fetch("https://restcountries.com/v2/name" + location.pathname)
+    fetch("https://restcountries.com/v3.1/name" + location.pathname)
         .then(res => res.json())
         .then(data => {
             app.children[1].remove();
             app.insertAdjacentHTML("beforeend", html.base(data[0]));
             addBorders(data[0].borders);
         })
-    .catch(() => {
+    .catch(err => {
+        console.error(err);
         // Go to home page if error in the request
         // document.querySelector("[href='/']").click();
     });

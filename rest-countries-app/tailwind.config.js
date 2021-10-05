@@ -31,7 +31,7 @@ module.exports = {
       },
       animation: {
         pulse: "pulse 1.75s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        fade: "fade .75s forwards",
+        fade: "fade .7s forwards",
       },
     },
   },
