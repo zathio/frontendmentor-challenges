@@ -11,12 +11,8 @@ This is a solution to the [REST Countries API with color theme switcher challeng
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -37,71 +33,36 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://zathio-countries-app.netlify.app/)
+- Live Site URL: https://zathio-countries-app.netlify.app/
+- Solution URL: https://www.frontendmentor.io/solutions/countries-app-with-vanilla-js-qWge8a4wI
 
 ## My process
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- Vanilla JS
+- [Tailwind CSS](https://tailwindcss.com/)
+- [ViteJS](https://vitejs.dev/)
+- [REST Countries API](https://restcountries.com/)
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+Building an app with vanilla js helped a lot to understand more about modern javascript.
+I'm also a bit surprised that I never felt limited or stuck with this vanilla approach, it was quite a good experience and I didn't felt the need to move on a front end framework for this project.
 
-To see how you can add code snippets, see below:
+Building a simple router seemed a bit challening at first but after multiple ideas I ended up writting a solution not too complex that I'm happy about.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
+I built my first skeleton loader and it was fun to design something similar to the final content, I can't imagine the app without any type of loading while it's fetching data and I believe the skeleton screen was the best suited for this app;
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+The theme toggling feature between light and dark mode was easy with Tailwind CSS.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
-### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+It was great to practice fetch requests by working with an api.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Inline HTML](https://marketplace.visualstudio.com/items?itemName=pushqrdx.inline-html) - This extension was a must have to get html syntax highlighting in es6 template strings.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Frontend Mentor - [@zathio](https://www.frontendmentor.io/profile/zathio)
+- Discord - Zathio#2976
