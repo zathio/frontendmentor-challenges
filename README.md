@@ -20,3 +20,4 @@ You can find below the live versions of my solutions :
 
 - [**Profile Card Component**](https://github.com/zathio/frontendmentor-challenges/tree/master/profile-card-component) : A profile card component made with Tailwind CSS.
 
+- [**Rest Countries App**](https://github.com/zathio/frontendmentor-challenges/tree/master/rest-countries-app) : A Single Page App to get informations about countries.
