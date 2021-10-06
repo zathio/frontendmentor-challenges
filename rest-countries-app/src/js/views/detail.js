@@ -30,7 +30,7 @@ const html = {
         </div>
     `,
     base: country => /*html*/`
-        <div class="px-3 sm:px-0 lg:grid lg:grid-cols-2 lg:justify-between lg:items-center lg:gap-x-20 xl:gap-x-32 mt-10 text-lg lg:text-base">
+        <div class="px-3 sm:px-0 lg:grid lg:grid-cols-2 lg:justify-between lg:items-center lg:gap-x-20 xl:gap-x-32 mt-10">
             <img src="${country.flags.svg}" alt="Flag" class="w-full max-w-sm lg:max-w-full object-cover shadow-lg bg-gray-dark/60 lg:mx-auto mb-14 lg:mb-0" style="aspect-ratio: 4/3">
             <div>
                 <h1 class="font-bold text-[2rem]">${country.name.common}</h1>
