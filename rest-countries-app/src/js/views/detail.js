@@ -10,7 +10,7 @@ const html = {
             <div class="lg:w-1/2 max-w-sm lg:max-w-full shadow-lg lg:mx-auto mb-14 lg:mb-0 bg-gray-dark/60" style="aspect-ratio: 4/3"></div>
             <div class="lg:w-1/2">
                 <div class="w-36 h-8 bg-gray-dark/60 rounded-sm"></div>
-                <div class="grid sm:grid-cols-2 gap-x-6 justify-between mt-10 mb-14">
+                <div class="sm:grid sm:grid-cols-2 gap-x-6 justify-between mt-10 mb-14">
                     <div class="space-y-3">
                         <div class="w-[58%] h-5 bg-gray-dark/60 rounded-sm"></div>
                         <div class="w-[69%] h-5 bg-gray-dark/60 rounded-sm"></div>
@@ -21,7 +21,7 @@ const html = {
                     <div class="mt-10 lg:mt-0 space-y-3">
                         <div class="w-[62%] h-5 bg-gray-dark/60 rounded-sm"></div>
                         <div class="w-[45%] h-5 bg-gray-dark/60 rounded-sm"></div>
-                        <div class="w-[89%] h-5 bg-gray-dark/60 rounded-sm"></div>
+                        <div class="w-[55%] h-5 bg-gray-dark/60 rounded-sm"></div>
                     </div>
                 </div>
                 <div class="w-[90%] h-5 bg-gray-dark/60 rounded-sm"></div>
