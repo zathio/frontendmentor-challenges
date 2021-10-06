@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   mode: 'jit',
 	purge: [
@@ -22,18 +24,11 @@ module.exports = {
     fontFamily: {
 			sans: ['Nunito Sans', 'sans-serif'],
 		},
-    extend: {
-      keyframes: {
-        fade: {
-          "0%": { opacity: 0 },
-          "100%": { opacity: 1 },
-        }
-      },
-      animation: {
-        pulse: "pulse 1.75s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        fade: "fade .7s forwards",
-      },
+    screens: {
+      xs: '530px',
+      ...defaultTheme.screens,
     },
+    extend: {},
   },
   variants: {
     extend: {},

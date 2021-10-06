@@ -7,7 +7,7 @@ const html = {
             <span>Back</span>
         </a>
         <div class="px-3 sm:px-0 lg:flex lg:justify-between lg:items-center lg:gap-x-20 xl:gap-x-32 mt-10 animate-pulse">
-            <div class="lg:w-1/2 shadow-lg mx-auto mb-14 lg:mb-0 bg-gray-dark/60" style="aspect-ratio: 4/3"></div>
+            <div class="lg:w-1/2 max-w-sm lg:max-w-full shadow-lg lg:mx-auto mb-14 lg:mb-0 bg-gray-dark/60" style="aspect-ratio: 4/3"></div>
             <div class="lg:w-1/2">
                 <div class="w-36 h-8 bg-gray-dark/60 rounded-sm"></div>
                 <div class="grid sm:grid-cols-2 gap-x-6 justify-between mt-10 mb-14">
@@ -118,7 +118,7 @@ export default app => {
             app.insertAdjacentHTML("beforeend", html.base(data[0]).trim());
         })
     .catch(err => {
-        // Go to home page if error in the request
+        // Go to home view if error in the request
         console.error(err);
         document.querySelector("[href='/']").click();
     });

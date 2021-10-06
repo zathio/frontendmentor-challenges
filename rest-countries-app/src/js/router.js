@@ -12,7 +12,7 @@ function router() {
 window.addEventListener("click", e => {
     if (e.target.closest("a[data-link]")) {
         e.preventDefault();
-        history.replaceState("", "", e.target.closest("a[data-link]").href);
+        history.pushState("", "", e.target.closest("a[data-link]").href);
         router();
     }
 });
